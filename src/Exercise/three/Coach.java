@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Coach extends Member {
     /**
-     * To create new member by initialising the object value
+     * To create new coach member by initialising the object value
      * @param firstname   is the first name of the member
      * @param lastname    is the last name of the member
      * @param gender      gender for the gender of the member

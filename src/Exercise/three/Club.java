@@ -3,7 +3,7 @@ package Exercise.three;
 import java.util.ArrayList;
 
 /**
- * this class will keep the club member in a team
+ * This class will keep the club member in a team
  */
 public class Club {
     ArrayList<Member> members;

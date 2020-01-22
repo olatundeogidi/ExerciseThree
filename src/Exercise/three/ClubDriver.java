@@ -7,8 +7,14 @@ import java.util.Random;
 
 public class ClubDriver {
     public static void main(String[] args) throws Exception{
+        /**
+         * This is to initiate the club class
+         */
         Club club = new Club(generateDummyMembers());
 
+        /**
+         * The try and catch are Java keywords to
+         */
         try {
             System.out.println("**********************************************");
             System.out.print("Generating a male team of 11 players (Under17)\n");
@@ -63,6 +69,10 @@ public class ClubDriver {
 
     }
 
+    /**
+     * The dummy data to be used for the club
+     * @return list of members within the constrains set
+     */
     public static ArrayList<Member> generateDummyMembers() {
         //Dummy Address
         ArrayList<Address> addr = new ArrayList<>();
