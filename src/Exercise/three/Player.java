@@ -15,4 +15,10 @@ public class Player extends Member {
     public Player(String firstname, String lastname, String gender, LocalDate dob, Address address, String nationality) {
         super(firstname, lastname, gender, dob, address, nationality);
     }
+
+    @Override
+    public String getBasicInfo() {
+        return "Player{" + "firstname=" + getFirstname() + ", lastname=" + getLastname() + ", gender=" + getGender() + ", dob=" + getDob() + "}";
+    }
+
 }

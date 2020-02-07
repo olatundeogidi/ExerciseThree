@@ -88,6 +88,11 @@ public class Member {
         return p.getYears();
     }
 
+    public String getBasicInfo() {
+        //return "Member{" + "firstname=" + firstname + ", lastname=" + lastname + ", dob=" + dob + "}";
+        return "Member:" +" " + firstname + " " + lastname + ";"  + " Age: " + getAge()+ ";"  + " Gender: " + getGender();
+    }
+
     @Override
     public String toString() {
         return "Member{" +
@@ -99,4 +104,5 @@ public class Member {
                 ", nationality='" + nationality + '\'' +
                 '}';
     }
+
 }

@@ -15,4 +15,10 @@ public class Coach extends Member {
     public Coach(String firstname, String lastname, String gender, LocalDate dob, Address address, String nationality) {
         super(firstname, lastname, gender, dob, address, nationality);
     }
+
+    @Override
+    public String getBasicInfo() {
+    //    return "Coach{" + "firstname=" + getFirstname() + ", lastname=" + getLastname() + ", gender=" + getGender() + ", dob=" + getDob() + "}";
+        return "COACH:" +" " + getFirstname() + " " + getLastname() + ";"  + " Age: " + getAge();
+    }
 }

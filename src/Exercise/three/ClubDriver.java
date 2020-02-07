@@ -4,30 +4,54 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class ClubDriver {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         /**
          * This is to initiate the club class
          */
         Club club = new Club(generateDummyMembers());
 
-        /**
-         * The try and catch are Java keywords to
-         */
-        try {
-            System.out.println("**********************************************");
-            System.out.print("Generating a male team of 11 players (Under17)\n");
-            System.out.println("**********************************************");
-            ArrayList<Member> m1 = club.createTeam(14, 17, "Male", 11);
-            for (Member member : m1) {
-                System.out.println(member.toString());
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        System.out.println("////////////////////////////////////////////");
+        String res = "yes";
+        Scanner in = new Scanner(System.in);
+        while (res.equalsIgnoreCase("yes")) {
+            System.out.println("Generating a football team\n");
+            System.out.println("Enter number of players : ");
+            int numberOfPlayers = in.nextInt();
+            System.out.println("Enter Minimum Age : ");
+            int minAge = in.nextInt();
+            System.out.println("Enter Maximum Age : ");
+            int maxAge = in.nextInt();
+            System.out.println("Enter Gender [Male, Female or Mixed]: ");
+            String gender = in.next();
 
+            /**
+             * The try and catch are Java keywords to run the function and throw exceptions if any
+             */
+            try {
+                System.out.println("******************************************************");
+                System.out.print("Generating a " + gender + " team of " + numberOfPlayers + " players (ages (" + minAge + "-" + maxAge + "))\n");
+                System.out.println("******************************************************");
+                //System.out.println("**********************************************");
+                //System.out.print("Generating a male team of 11 players (Under17)\n");
+                //System.out.println("**********************************************");
+                ArrayList<Member> m1 = club.createTeam(minAge, maxAge, gender, numberOfPlayers);
+                for (Member member : m1) {
+                    System.out.println(member.getBasicInfo());
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            System.out.println("******************************************************");
+            System.out.println("Do you want to continue ? [Yes or No]: ");
+            res = in.next();
+
+            //System.out.println("////////////////////////////////////////////");
+        }
+        System.out.println("Application Exiting");
+    }
+    /*
         try {
             System.out.println("**********************************************");
             System.out.print("Generating a male team of 11 players (Under24)\n");
@@ -68,7 +92,7 @@ public class ClubDriver {
         System.out.println("////////////////////////////////////////////");
 
     }
-
+    */
     /**
      * The dummy data to be used for the club
      * @return list of members within the constrains set
@@ -143,6 +167,13 @@ public class ClubDriver {
         members.add(new Member("Horatio", "Epilet", "Male", LocalDate.parse("21/6/1995", formatter), addr.get(rand.nextInt(addr.size())), "Pakistan"));
 
  */
+        members.add(new Coach("Ginny", "Rapaport", "Female", LocalDate.parse("8/25/1976", formatter), addr.get(rand.nextInt(addr.size())), "China"));
+        members.add(new Coach("Aurelia", "Pargetter", "Female", LocalDate.parse("2/9/1972", formatter), addr.get(rand.nextInt(addr.size())), "Indonesia"));
+        members.add(new Coach("Jose", "Breslau", "Male", LocalDate.parse("11/12/1967", formatter), addr.get(rand.nextInt(addr.size())), "Brazil"));
+        members.add(new Coach("Hilton", "Goodin", "Male", LocalDate.parse("7/30/1966", formatter), addr.get(rand.nextInt(addr.size())), "France"));
+        members.add(new Coach("Cristen", "Dellow", "Female", LocalDate.parse("10/20/1974", formatter), addr.get(rand.nextInt(addr.size())), "Poland"));
+        members.add(new Coach("Zane", "Trevascus", "Male", LocalDate.parse("1/15/1970", formatter), addr.get(rand.nextInt(addr.size())), "Poland"));
+        members.add(new Coach("Horatio", "Epilet", "Male", LocalDate.parse("6/19/1975", formatter), addr.get(rand.nextInt(addr.size())), "Pakistan"));
 
         members.add(new Member("Minda", "Houten", "Female", LocalDate.parse("7/4/2003", formatter), addr.get(rand.nextInt(addr.size())), "Russia"));
         members.add(new Member("Alverta", "Tesh", "Female", LocalDate.parse("6/2/1991", formatter), addr.get(rand.nextInt(addr.size())), "Greece"));

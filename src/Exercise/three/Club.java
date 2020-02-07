@@ -1,6 +1,7 @@
 package Exercise.three;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * This class will keep the club member in a team
@@ -30,14 +31,17 @@ public class Club {
         ArrayList<Member> teamMembers = new ArrayList<>();
         int count=0;
         for (Member member : members) {
+            if(member instanceof Coach){
+                continue;
+            }
             if (count==numberOfPlayers) {
                 break;
             }
             if (member.getAge()>=minAge && member.getAge()<=maxAge){
-                if (gender.equals("Mixed")){
+                if(member.getGender().equalsIgnoreCase(gender)){
                     teamMembers.add(member);
                     count++;
-                } else if (member.getGender().equals(gender)){
+                } else if (gender.equals("Mixed")){
                     teamMembers.add(member);
                     count++;
                 }
@@ -46,6 +50,16 @@ public class Club {
         if (teamMembers.size()<numberOfPlayers){
             throw new Exception("Team cannot be created due to insufficient team numbers");
         }
+        //add random coach - no criteria set for coach
+        ArrayList<Member>Allcoaches=new ArrayList<>();
+            for (Member member : members) {
+                if(member instanceof Coach) {
+                    Allcoaches.add(member);
+                }
+            }
+            Collections.shuffle(Allcoaches);
+            teamMembers.add(Allcoaches.get(0));
+
         return teamMembers;
     }
 }
